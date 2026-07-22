@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prologue</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro.css">
+</head>
+
+<body>
+    <audio id="bgm" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+   <div id="story-container">
+    <section class="section" data-background="backgrounds/prologue/black.jpg">
+        <br><br><br><br><br>
+    </section>
+        <section class="section" data-bgm="audio/bgm/intro2.mp3" data-background="backgrounds/prologue/destroyed.png">
+            "How long... was I out?"
+        </section>
+        <section class="section">
+            "Ten years. Exactly."
+        </section>
+        <section class="section">
+            It feels like I'm trapped in a heavily secured asylum.<br>
+            And somehow... I’ve been asleep for an entire decade.
+        </section>
+        <section class="section">
+            The only one here to greet me is her —<br>Ms. HTML.
+        </section>
+        <section class="section">
+            She's the first and only voice I've heard.<br>
+            She tells me things I can barely comprehend.<br>
+            She says... I’m the last hope of their nation.
+        </section>
+        <section class="section">
+            "Why me? Why should I even trust you?"
+        </section>
+        <section class="section" data-background="backgrounds/badend/4.png">
+            "According to your previous consent, you volunteered for this expedition."<br>
+            <i>(She pauses, as if retrieving data.)</i><br>
+            "You stated, and I quote: 'I’ll save this nation, no matter what.'"
+        </section>
+        <section class="section">
+            "...Did I really say that?"
+        </section>
+        <section class="section">
+            "Affirmative."
+        </section>
+        <section class="section">
+            I didn’t want to believe her.<br>
+            But she showed me footage —<br>
+            ...a version of myself, speaking those exact words.
+        </section>
+        <section class="section">
+            It’s real.<br>
+            Or at least... It looks real.
+        </section>
+        <section class="section" data-background="backgrounds/prologue/destroyed.png">
+            "Alright... assuming I did agree to this — what exactly am I supposed to do?"
+        </section>
+        <section class="section">
+            "<span class='player-name'></span>, your mind is the key.<br>
+            I do not speak figuratively, nor metaphorically.<br>
+            Literally — your mind is a weapon."
+        </section>
+        <section class="section" data-background="backgrounds/prologue/city.png">
+            She explains:<br>
+            The world has been at war for decades.<br>
+            No end in sight.<br>
+            Other nations have even built superweapons to tip the balance.
+        </section>
+        <section class="section">
+            Their greatest project?<br>
+            A device that can transfer consciousness across time.
+        </section>
+        <section class="section" data-background="backgrounds/prologue/black.jpg">
+            "We acquired this device first.<br>
+            And you, <span class='player-name'></span>, are the only subject capable of surviving its use."
+        </section>
+        <section class="section">
+            "Wait. What?<br>
+            You’re talking about... time travel?"
+        </section>
+        <section class="section">
+            "Not precisely.<br>
+            The device transmits memories — from past and future lives — into your current consciousness.<br>
+            But the mind suffers severe degradation after each transfer.<br>
+            You alone withstood the extraction."
+        </section>
+        <section class="section">
+            "...So I’m like some kind of last hope? Or something?"
+        </section>
+        <section class="section">
+            "Affirmative.<br>
+            Many sacrificed their minds so you could stand here."
+        </section>
+        <section class="section">
+            "Wait, wait, hold on —<br>
+            How does going to the past even help save the world?"
+        </section>
+        <section class="section">
+            "A valid question, <span class='player-name'></span>.<br>
+            We do not fully understand the Xreader’s origins.<br>
+            By inserting you into critical timelines, we aim to uncover who created it, and how to stop it."
+        </section>
+        <section class="section">
+            "I... see. Then, I guess I’ll have to do my best."
+        </section>
+        <section class="section">
+            "Your cooperation is greatly appreciated, <span class='player-name'></span>.<br>
+            Follow me.<br>
+            We shall begin the extraction process."
+        </section>
+        <section class="section">
+            <button class="next-chapter-button" onclick="window.location.href='intro3.html'">continue...</button>
+        </section>
+    </div>
+
+     <!-- Skip Button -->
+    <button id="skipButton">Skip</button>
+
+    <!-- Confirmation Popup -->
+    <div id="skipPopup" class="hidden">
+        <div class="popup-content futuristic">
+          <p class="popup-title">Having déjà vu, perhaps?</p>
+          <p class="popup-warning">Skip this memory then...</p>
+          <div class="popup-buttons">
+            <button id="confirmSkip" class="popup-btn yes">Yes</button>
+            <button id="cancelSkip" class="popup-btn no">No</button>
+          </div>
+        </div>
+      </div>
+
+    <script>
+        document.getElementById("skipButton").addEventListener("click", function () {
+        document.getElementById("skipPopup").classList.remove("hidden");
+        });
+
+        document.getElementById("cancelSkip").addEventListener("click", function () {
+        document.getElementById("skipPopup").classList.add("hidden");
+        });
+
+        document.getElementById("confirmSkip").addEventListener("click", function () {
+        window.location.href = "storyselect.html"; // Redirect on confirmation
+        });
+        let playerName = localStorage.getItem("username");
+
+        if (!playerName) {
+            window.location.href = "index.html"; // Redirect if no name
+        } else {
+            // Capitalize the first letter
+            const formattedName = playerName.charAt(0).toUpperCase() + playerName.slice(1);
+            document.querySelectorAll(".player-name").forEach(span => {
+                span.textContent = playerName;
+            });
+        }
+    </script>
+
+    <!-- MOVE script.js to here -->
+    <script src="script.js"></script>
+</body>
+</html>

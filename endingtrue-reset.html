@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceed to Attack Ricci</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+
+</head>
+
+<body>
+    <audio id="bgm" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="story-container">
+    <section class="section" data-background="backgrounds/prologue/black.jpg">
+      <br><br><br><br><br>
+    </section>
+    <section class="section" data-bgm="audio/bgm/battle.mp3">
+      <p>I didn’t have time to think.</p>
+    </section>
+    <section class="section">
+      <p>No strategy, no plan.</p>
+    </section>
+    <section class="section">
+      <p>Just raw rage—ugly, blistering rage—boiling over everything else.</p>
+    </section>
+    <section class="section">
+      <p>The guilt, the loss, the helplessness—it all collapsed into one violent instinct.</p>
+    </section>
+    <section class="section">
+      <p>With a roar, I charged Ricci.</p>
+    </section>
+    <section class="section">
+      <p>My fists clenched so tight I could feel the bones grind.</p>
+    </section>
+    <section class="section">
+      <p>My heart slammed against my ribs like it wanted out.</p>
+    </section>
+    <section class="section">
+      <p>Ricci didn’t flinch.</p>
+    </section>
+    <section class="section">
+      <p>He didn’t even move.</p>
+    </section>
+    <section class="section">
+      <p>Just watched me with that same smug, hollow stare—like a man who’s already won.</p>
+    </section>
+    <section class="section">
+      <p>Then—<strong>crack.</strong></p>
+    </section>
+    <section class="section">
+      <p>I hit the pavement.</p>
+    </section>
+    <section class="section">
+      <p>Face first.</p>
+    </section>
+    <section class="section">
+      <p>Hard.</p>
+    </section>
+    <section class="section">
+      <p>Breath gone.</p>
+    </section>
+    <section class="section">
+      <p>Vision swimming.</p>
+    </section>
+    <section class="section">
+      <p>Ricci crouched beside me, his voice low, almost casual.</p>
+    </section>
+    <section class="section">
+      <p>“You never were good at thinking things through, Doc.”</p>
+    </section>
+    <section class="section">
+      <p>I tried to move.</p>
+    </section>
+    <section class="section">
+      <p>Tried to speak.</p>
+    </section>
+    <section class="section">
+      <p>Nothing.</p>
+    </section>
+    <section class="section">
+      <p>He leaned in close.</p>
+    </section>
+    <section class="section">
+      <p>I could smell the cologne, the smoke on his jacket.</p>
+    </section>
+    <section class="section">
+      <p>“Another goddamn footnote in my story.”</p>
+    </section>
+    <section class="section">
+      <p>He stood up.</p>
+    </section>
+    <section class="section">
+      <p>Lit a cigarette with steady hands.</p>
+    </section>
+    <section class="section">
+      <p>The flick of the lighter echoed like a gunshot.</p>
+    </section>
+    <section class="section">
+      <p>Then he walked away. Just like that.</p>
+    </section>
+    <section class="section">
+      <p>The street was quiet again.</p>
+    </section>
+    <section class="section">
+      <p>No sirens.</p>
+    </section>
+    <section class="section">
+      <p>No help coming.</p>
+    </section>
+    <section class="section">
+      <p>Just the sound of my own blood soaking into the concrete.</p>
+    </section>
+    <section class="section">
+      <p>And for the first time, I understood:</p>
+    </section>
+    <section class="section">
+      <p>This wasn’t justice.</p>
+    </section>
+    <section class="section">
+      <p>This was just how it ends.</p>
+    </section>
+    <section class="section">
+  <p class="fade-text">You failed.</p>
+  <button onclick="location.href='endingtrue copy.html#bottom'" class="choice-button">Try Again</button>
+</section>
+    </div>
+    
+
+    <script>
+        let playerName = localStorage.getItem("username");
+
+        if (!playerName) {
+            window.location.href = "index.html"; // Redirect if no name
+        } else {
+            document.querySelectorAll(".player-name").forEach(span => {
+                span.textContent = playerName;
+            });
+        }
+    </script>
+    <!-- MOVE script.js to here -->
+    <script src="script.js"></script>
+    <script src="story.js"></script>
+</body>
+</html>

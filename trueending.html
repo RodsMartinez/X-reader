@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>True Ending</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 20vh;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: gold;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      color: lightblue;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>TRUE ENDING ACHIEVED</h1>
+  <div class="message">
+    You’ve discovered the truth.<br>
+    The Gallery is now unlocked.
+  </div>
+
+  <!-- Changed from static link to JS-triggered navigation -->
+  <a onclick="unlockAndGoHome()">Return to Home</a>
+
+  <script>
+    function unlockAndGoHome() {
+      // Set flags in localStorage
+      localStorage.setItem("unlockedGallery", "true");
+      localStorage.setItem("seenGalleryPopup", "false");
+
+      // Give the browser a brief moment to save before navigating
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 100);
+    }
+  </script>
+</body>
+</html>

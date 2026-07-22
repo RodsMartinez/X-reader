@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLOT</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="auth.js"></script>
+</head>
+<style>
+    body{
+    font-family: tomorrow;
+    margin: 0;
+    height: 100vh;
+    background-image: url('bg3.gif'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: screen; 
+    overflow: hidden; 
+}
+</style>
+<body>
+    <!--This is the PLOT Page-->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="logo.png" alt="Logo" class="nav-logo">
+            <a href="index.html">HOME</a>
+            <a href="index2.html">CHARACTERS</a>
+            <a href="index3.html"class="active">PLOT</a>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="login-button"></a>
+        </div>
+    </header>
+    <!-- Main Plot Section -->
+  <section class="plot-section">
+    <div class="plot-title">PLOT</div>
+
+    <div class="plot-content">
+      <div class="plot-text">
+        <p>
+          This takes place in the distant future where the protagonist wakes up in a futuristic solitary confinement. Here you stumble upon an android, that of which resembles the female body, who guides you the moment you wake up. She introduced herself as a bot dedicated to guiding people like you, she calls herself Hadley Therese M. Lewis, (HTML for short).
+        </p>
+        <p>
+          She explains that the world they live in has been in a constant war and has continuously been so for the past decades. You, however, are the key to ending this feud, they call you the <span class="highlight">XREADER</span>. You, and only you, survived the experimentation, and are capable of traveling through the memories of your different past lives. But due to extensive experimentation you have forgotten the current person you originally were. Replacing it with the name the user provides.
+        </p>
+        <p style="color: yellow; font-weight: bold;">
+          It’s time travel but with mind swapping!
+        </p>
+        <p>
+          An important information was buried in the past and only you can acquire it. Your mission is to find the key that could end the war by accessing 5 past versions of yourself. Can you find the answer within those past 5 lives?
+        </p>
+      </div>
+
+      <div class="plot-image">
+        <img src="plotbg.png" alt="Plot Scene">
+      </div>
+    </div>
+  </section>
+
+  <!-- Popup (Login / Register) -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">×</span>
+      
+     <!-- Login Form -->
+        <div id="login-form">
+          <h2>Who are you?</h2>
+          <input type="text" id="login-username" placeholder="Username"><br>
+          <input type="password" id="login-password" placeholder="Password">
+          <span class="toggle-password" onclick="togglePassword('login-password', this)">Reveal</span><br>
+          <button onclick="login()">Login</button>
+          <p style="text-align: center; margin-top: 10px;">
+          <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+          </p>
+          <p>Don't have an account? <button onclick="showRegisterForm()">Register</button></p>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-form" class="hidden">
+          <h2>Applying for X-Reader</h2>
+          <input type="text" id="register-username" placeholder="Username"><br>
+          <input type="password" id="register-password" placeholder="Password">
+          <span class="toggle-password" onclick="togglePassword('register-password', this)">Reveal</span><br>
+          <input type="number" id="register-age" placeholder="Age"><br>
+          <button onclick="register()">Register</button>
+          <p>Already part of the experimentation? <button onclick="showLoginForm()">Login</button></p>
+        </div>
+    </div>
+  </div>
+  <script>
+        // Check if true ending was reached
+      window.addEventListener('DOMContentLoaded', () => {
+        const isGalleryUnlocked = localStorage.getItem("unlockedGallery") === "true";
+
+        if (isGalleryUnlocked) {
+          const galleryButton = document.createElement("a");
+          galleryButton.href = "gallery.html";
+          galleryButton.textContent = "GALLERY";
+          galleryButton.className = "gallery-button";
+          document.querySelector('.nav-left').appendChild(galleryButton);
+        }
+      });
+  </script>
+
+</html>

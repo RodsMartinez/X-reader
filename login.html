@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Login System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .showicon {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-150%);
+            display: flex;
+            align-items: center;
+            padding-right: 0.75rem;
+            color: #6b7280;
+            transition-property: color;
+            transition-duration: 0.15s;
+            transition-timing-function: ease-in-out;
+        }
+
+        .showicon:hover {
+            color: #4b5563;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 24px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            display: block;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Login</h2>
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+                <input type="text" id="username" name="username"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter your username">
+            </div>
+
+            <div>
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                <input type="password" id="password" name="password"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter your password">
+                <div class="relative">
+                    <button type="button" onclick="togglePassword()" class="showicon">
+                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="error-message" class="text-red-500 text-xs italic" style="display: none;">
+                Invalid username or password
+            </div>
+            <div class="flex items-center justify-between">
+                <label class="flex items-center text-sm text-gray-600">
+                    <input type="checkbox"
+                        class="h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300 rounded transition-colors" />
+                    <span class="ml-2">Remember me</span>
+                </label>
+
+                <button type="button" id="forgotPasswordBtn" class="text-blue-500 hover:text-blue-600 text-sm underline hover:no-underline">
+                    Forgot password?
+                </button>
+            </div>
+            <button type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">log in</button>
+        </form>
+        <p class="text-center text-gray-600 text-sm mt-4">
+            Don't have an account? <a href="#" id="register-link"
+                class="text-blue-500 hover:text-blue-700 font-semibold">Register</a>
+        </p>
+    </div>
+
+    <div id="registration-container" class="bg-white p-8 rounded-lg shadow-md w-full max-w-md" style="display: none;">
+        <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Register</h2>
+        <form id="registrationForm" class="space-y-4">
+            <div>
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">email:</label>
+                <input type="text" id="email" name="email"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter your email">
+            </div>
+            <div>
+                <label for="newUsername" class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+                <input type="text" id="newUsername" name="newUsername"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter your username">
+            </div>
+            <div>
+                <label for="newPassword" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                <input type="password" id="newPassword" name="newPassword"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter your password">
+                <button type="button" id="toggleNewPassword"
+                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 focus:outline-none">
+                    <svg id="eyeNewIcon" class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path
+                            d="M2.458 12C3.732 7.943 7.348 3 12 3s8.268 4.943 9.542 9c-1.274 4.057-4.89 9-9.542 9-4.652 0-8.268-4.943-9.542-9z" />
+                    </svg>
+                </button>
+            </div>
+            <div>
+                <label for="confirmPassword" class="block text-gray-700 text-sm font-bold mb-2">Confirm
+                    Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Confirm your password">
+            </div>
+            <div id="registration-error-message" class="text-red-500 text-xs italic" style="display: none;">
+                Error: Passwords do not match.
+            </div>
+            <button type="submit"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Register</button>
+        </form>
+        <p class="text-center text-gray-600 text-sm mt-4">
+            Already have an account? <a href="#" id="login-link"
+                class="text-blue-500 hover:text-blue-700 font-semibold">Log in</a>
+        </p>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Forgot Password?</h3>
+            <p class="text-gray-600 mb-6">Would you like an otp to reset your password?</p>
+            <div class="flex justify-end space-x-3">
+                <button id="noForgotPassword" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors">
+                    No
+                </button>
+                <button id="yesForgotPassword" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuaJokOtr8q4jYLVXXWXSTs_iRq6EmDy4",
+            authDomain: "machodepapa-37712.firebaseapp.com",
+            projectId: "machodepapa-37712",
+            storageBucket: "machodepapa-37712.firebasestorage.app",
+            messagingSenderId: "430693590316",
+            appId: "1:430693590316:web:b86f76ed5b63ba30567889"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const loginForm = document.getElementById('loginForm');
+        const registrationForm = document.getElementById('registrationForm');
+        const registrationContainer = document.getElementById('registration-container');
+        const loginContainer = document.querySelector('.bg-white');
+        const registerLink = document.getElementById('register-link');
+        const loginLink = document.getElementById('login-link');
+        const errorMessage = document.getElementById('error-message');
+        const registrationErrorMessage = document.getElementById('registration-error-message');
+        const forgotPasswordModal = document.getElementById('forgotPasswordModal');
+        const yesForgotPassword = document.getElementById('yesForgotPassword');
+        const noForgotPassword = document.getElementById('noForgotPassword');
+        const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+
+        // Track failed login attempts
+        let failedLoginAttempts = 0;
+        
+        // Function to show the forgot password modal
+        function showForgotPasswordModal() {
+        forgotPasswordModal.style.display = 'block'; // Ensure modal is visible before animation
+        setTimeout(() => {
+            forgotPasswordModal.classList.add('show');
+        }, 10); // slight delay to trigger transition
+    }
+        // Function to hide the forgot password modal
+        function hideForgotPasswordModal() {
+        forgotPasswordModal.classList.remove('show');
+        setTimeout(() => {
+            forgotPasswordModal.style.display = 'none';
+        }, 300); // match with your CSS transition time
+    }
+
+        // Function to get user-friendly error message
+        function getErrorMessage(error) {
+            switch (error.code) {
+                case 'auth/invalid-email': //case 1
+                    return 'Please enter a valid email address';
+                case 'auth/user-not-found': //case 2
+                    return 'No account found with this email';
+                case 'auth/wrong-password': //case 3
+                    return 'Incorrect password';
+                case 'auth/email-already-in-use': //case 4
+                    return 'This email is already registered';
+                case 'auth/weak-password': //case 5
+                    return 'Password should be at least 6 characters';
+                default: // default case
+                    return 'Please enter your password';
+            }
+        }
+
+        // Function to handle login
+        async function handleLogin(event) {
+            event.preventDefault();
+
+            const email = loginForm.username.value.trim();
+            const password = loginForm.password.value.trim();
+
+            try {
+                await firebase.auth().signInWithEmailAndPassword(email, password);
+                // Reset failed login attempts on successful login
+                failedLoginAttempts = 0;
+                alert('Login successful!');
+                window.location.href = 'protomain.html';
+
+                // Redirect or update UI as needed
+            } catch (error) {
+                errorMessage.textContent = getErrorMessage(error);
+                errorMessage.style.display = 'block';
+                loginForm.password.value = '';
+                
+                // Increment failed login attempts
+                failedLoginAttempts++;
+                
+                // Check if we should show the forgot password modal
+                if (failedLoginAttempts % 5 === 0) {
+                    showForgotPasswordModal();
+                }
+            }
+        }
+
+        // Function to handle registration
+        async function handleRegistration(event) {
+            event.preventDefault();
+
+            const email = registrationForm.email.value.trim();
+            const password = registrationForm.newPassword.value.trim();
+            const confirmPassword = registrationForm.confirmPassword.value.trim();
+
+            if (password !== confirmPassword) {
+                registrationErrorMessage.textContent = 'Passwords do not match';
+                registrationErrorMessage.style.display = 'block';
+                return;
+            }
+
+            try {
+                await firebase.auth().createUserWithEmailAndPassword(email, password);
+                alert('Registration successful! Please log in.');
+                registrationContainer.style.display = 'none';
+                loginContainer.style.display = 'block';
+                registrationForm.reset();
+            } catch (error) {
+                registrationErrorMessage.textContent = getErrorMessage(error);
+                registrationErrorMessage.style.display = 'block';
+            }
+        }
+
+        // Event Listeners
+        loginForm.addEventListener('submit', handleLogin);
+        registrationForm.addEventListener('submit', handleRegistration);
+
+        registerLink.addEventListener('click', () => {
+            loginContainer.style.display = 'none';
+            registrationContainer.style.display = 'block';
+        });
+
+        loginLink.addEventListener('click', () => {
+            registrationContainer.style.display = 'none';
+            loginContainer.style.display = 'block';
+        });
+
+        yesForgotPassword.addEventListener('click', () => {
+        hideForgotPasswordModal();
+        alert('An OTP has been sent to user');
+    });
+
+        noForgotPassword.addEventListener('click', () => {
+        hideForgotPasswordModal();
+    });
+
+        // Add event listener for the Forgot Password button
+         forgotPasswordBtn.addEventListener('click', () => {
+        showForgotPasswordModal();
+    });
+
+
+        function togglePassword() {
+            const password = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+
+            if (password.type === 'password') {
+                password.type = 'text';
+                eyeIcon.innerHTML = '<path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/>';
+            } else {
+                password.type = 'password';
+                eyeIcon.innerHTML = '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>';
+            }
+        }
+
+        // Listen for auth state changes
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in
+                console.log('User is signed in:', user.email);
+            } else {
+                // User is signed out
+                console.log('User is signed out');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <style>
+    @font-face {
+    font-family: tomorrow;
+    src: url(tomorrow.ttf);
+  }
+    body {
+      font-family: tomorrow;
+      margin: 0;
+      background-color: #f0f0f0;
+      background-image: url('bg.gif'); 
+    }
+
+    .header {
+      background: url('header.png') no-repeat center;
+      padding: 1em;
+      background-color: #333;
+      color: black;
+      text-align: center;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 2em;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: #666;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 700px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .modal img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+
+    .back-btn {
+      margin: 1em;
+      display: inline-block;
+      background-color: #555;
+      color: white;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .back-btn:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+    <audio autoplay loop hidden>
+        <source src="GALLERY/gallery.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+  <div class="header">
+    <h1>Art Gallery</h1>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+
+  <div class="gallery">
+    <img src="GALLERY/original.jpg" data-description="Figuring out HTML's character expression through sketches">
+    <img src="GALLERY/concept.jpg" data-description="A quick sketch of her design">
+    <img src="GALLERY/html no color2.png"  data-description="A redraw version of the previous drawings">
+</div>
+<div class="gallery">
+    <img src="GALLERY/html no color.png"  data-description="A remaster of the previous drawing">
+    <img src="GALLERY/8.png"  data-description="Draft and designing for the appearance of the response page">
+    <img src="GALLERY/original response page.png"  data-description="A functioning response page prototype">
+    <!-- Add more images as needed -->
+  </div>
+  <div class="gallery">
+    <img src="GALLERY/isabella sketch.png" data-description="A sketch of the character Isabella in the Scientist Story.">
+    <img src="GALLERY/noshading.png" data-description="No shading of Olivia in the Bartender Story.">
+    <img src="GALLERY/thebartender.png" data-description="Concept art of the possible appearance of the bartender">
+    <!-- Add more images as needed -->
+  </div>
+  <div class="gallery">
+    <img src="GALLERY/extra sketch.png" data-description="Unused png for Olivia">
+    <img src="GALLERY/drunk.png" data-description="Unused drunk sketch of Olivia">
+    <img src="GALLERY/extra sketch2.png" data-description="unused chibi art of Olivia complaining">
+    <!-- Add more images as needed -->
+  </div>
+  <div class="gallery">
+    <img src="GALLERY/mc draft.png" data-description="Rough sketch of the MC/You">
+    <img src="GALLERY/fish eye draft.png" data-description="Rough sketch of HTML bad end">
+    <img src="GALLERY/fish eye draft 2.png" data-description="Alternate rough sketch of HTML bad end">
+    <!-- Add more images as needed -->
+  </div>
+  <div class="gallery">
+    <img src="GALLERY/confession draft.png" data-description="Rough sketch of the confession scene">
+    <img src="GALLERY/html death draft.png" data-description="Rough sketch of HTML's death">
+    <img src="GALLERY/code.jpg" data-description="The coding process.">
+    <!-- Add more images as needed -->
+  </div>
+
+
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <img id="modalImage" src="" alt="Popup Image">
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <script>
+    const isGalleryUnlocked = localStorage.getItem("unlockedGallery") === "true";
+    const hasSeenPopup = localStorage.getItem("seenGalleryPopup") === "true";
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalDesc = document.getElementById('modalDescription');
+    const closeBtn = document.getElementById('closeModal');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'block';
+        modalImg.src = img.src;
+        modalDesc.textContent = img.getAttribute('data-description');
+      });
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = 'none';
+    };
+
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    };
+  </script>
+
+</body>
+</html>

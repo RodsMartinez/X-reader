@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceed to Disable the X-Reader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <style>
+    .credits-button {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: #fff;
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 10px #f9d42388;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .credits-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff4e5088;
+    }
+
+    .time-skip {
+        text-align: center;
+        font-size: 2rem;
+        opacity: 0.5;
+        font-style: italic;
+        animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 0.5; transform: scale(1); }
+        }
+  </style>
+</head>
+
+<body>
+    <audio id="bgm" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="story-container">
+      <section class="section" data-background="backgrounds/credits/black.jpg"><br><br><br><br><br></section>
+        <section class="section"  data-bgm="audio/bgm/trueending.mp3">
+            <p>I looked between Ricci and the X-Reader.</p>
+        </section>
+        <section class="section">
+        <p>HTML’s voice echoed calmly, like it always did in the darkest moments.</p>
+        </section>
+        <section class="section">
+        <p>“His body is reliant on energy.”</p>
+        </section>
+        <section class="section">
+        <p>“To terminate his movements…”</p>
+        </section>
+        <section class="section">
+        <p>“you must disable the X-Reader itself.”</p>
+        </section>
+        <section class="section">
+        <p>I hesitated. </p>
+        </section>
+        <section class="section">
+        <p>“Will it work?”</p>
+        </section>
+        <section class="section">
+        <p>“Yes.”</p>
+        </section>
+        <section class="section">
+        <p>Not a single trace of doubt.</p>
+        </section>
+        <section class="section">
+        <p>That was enough.</p>
+        </section>
+        <section class="section">
+        <p>I turned and ran—not toward Ricci,</p>
+        </section>
+        <section class="section" data-background="backgrounds/trueend/momentoftruth.png">
+        <p>but to the core.</p>
+        </section>
+        <section class="section">
+        <p>He shouted behind me,</p>
+        </section>
+        <section class="section">
+        <p>his voice twisted with desperation.</p>
+        </section>
+        <section class="section">
+        <p>“Wait—”</p>
+        </section>
+        <section class="section">
+        <p>“Wait—wait!”</p>
+        </section>
+        <section class="section">
+        <p>“You don’t know what you’re doing!”</p>
+        </section>
+        <section class="section">
+        <p>“If you disable it then—”</p>
+        </section>
+        <section class="section">
+        <p>I didn’t listen. I couldn’t.</p>
+        </section>
+        <section class="section">
+        <p>All I saw was the console,</p>
+        </section>
+        <section class="section">
+        <p> the pulsing heart of this cursed place.</p>
+        </section>
+        <section class="section">
+        <p>The override sequence blinked red,</p>
+        </section>
+        <section class="section">
+        <p>waiting for me to decide.</p>
+        </section>
+        <section class="section" data-sfx="audio/sfx/keyopen.mp3" data-background="backgrounds/prologue/black.jpg">
+        <p>I hit the keys.</p>
+        </section>
+        <section class="section">
+        <p>The system began to hum violently. </p>
+        </section>
+        <section class="section" data-sfx="audio/sfx/alarm.mp3">
+        <p>Alarms screamed.</p>
+        </section>
+        <section class="section" data-sfx="audio/sfx/spark.mp3">
+        <p>Sparks burst from his body,</p>
+        </section>
+        <section class="section">
+        <p>the energy sustaining him unraveling.</p>
+        </section>
+        <section class="section">
+        <p>He was nothing without it.</p>
+        </section>
+        <section class="section">
+        <p>A parasite detached from its host.</p>
+        </section>
+        <section class="section">
+        <p>He let out one last scream—.</p>
+        </section>
+        <section class="section" data-sfx="audio/sfx/powerdown.mp3">
+        <p>and shut down the moment the power went down.</p>
+        </section>
+        <section class="section">
+        <p>I turned to Hadley,</p>
+        </section>
+        <section class="section">
+        <p>a breath of relief escaping me.</p>
+        </section>
+        <section class="section">
+        <p>“It’s over.”</p>
+        </section>
+         <section class="section">
+        <p>I said with the brightest smile I could ever muster</p>
+        </section>
+        <section class="section">
+        <p>But she didn’t move.</p>
+        </section>
+        <section class="section">
+        <p>“Hadley…?”</p>
+        </section>
+        <section class="section">
+        <p>She swayed slightly.</p>
+        </section>
+        <section class="section">
+        <p>Her limbs twitched,</p>
+        </section>
+        <section class="section">
+        <p>like wires were misfiring.</p>
+        </section>
+        <section class="section">
+        <p>My stomach turned.</p>
+        </section>
+        <section class="section">
+        <p>“What’s wrong?”</p>
+        </section>
+        <section class="section">
+        <p>Her voice crackled as her systems began to fail.</p>
+        </section>
+        <section class="section" data-background="backgrounds/trueend/death.png">
+        <p>“Disabling the X-Reader…”</p>
+        </section>
+        <section class="section">
+        <p>“removes my power sources”</p>
+        </section>
+        <section class="section">
+        <p>I froze...</p>
+        </section>
+        <section class="section">
+        <p>“No… wait, I didn’t know about tha—”</p>
+        </section>
+        <section class="section">
+        <p>“I’m… sorry. ”</p>
+        </section>
+        <section class="section">
+        <p>“I didn’t want to risk hesitation.”</p>
+        </section>
+        <section class="section">
+        <p>She looked up at me,</p>
+        </section>
+        <section class="section">
+        <p>eyes soft and flickering like a dying star.</p>
+        </section>
+        <section class="section">
+        <p>“It had to be done.”</p>
+        </section>
+        <section class="section">
+        <p>I dropped to my knees beside her.</p>
+        </section>
+        <section class="section">
+        <p> “No...”</p>
+        </section>
+        <section class="section">
+        <p> “No, no, no, no,”</p>
+        </section>
+        <section class="section">
+        <p> we can fix this—”</p>
+        </section>
+        <section class="section">
+        <p> "we can probably reroute something—I didn’t mean for this—!”</p>
+        </section>
+        <section class="section">
+        <p>She raised a hand,</p>
+        </section>
+        <section class="section">
+        <p>brushed my face with fingers growing colder.</p>
+        </section>
+        <section class="section">
+        <p>“You did the right thing.”</p>
+        </section>
+        <section class="section">
+        <p>A pause.</p>
+        </section>
+        <section class="section">
+        <p>“You always did.”</p>
+        </section>
+        <section class="section">
+        <p>“In every life.”</p>
+        </section>
+        <section class="section">
+        <p>She smiled—softly, peacefully.</p>
+        </section>
+        <section class="section">
+        <p>The first time it looked truly human.</p>
+        </section>
+        <section class="section">
+        <p>Then her hand fell.</p>
+        </section>
+        <section class="section">
+        <p>Her eyes dimmed.</p>
+        </section>
+        <section class="section" data-background="backgrounds/credits/black.jpg">
+        <p>And she was gone.</p>
+        </section>
+        <section class="section">
+        <p>The room didn’t notice.</p>
+        </section>
+        <section class="section">
+        <p>No alarms. No shutdown tone.</p>
+        </section>
+        <section class="section">
+        <p>Just the hum of old circuits, still running.</p>
+        </section>
+        <section class="section">
+        <p>I waited for her voice to return.</p>
+        </section>
+        <section class="section">
+        <p>For a flicker. A blink. Anything.</p>
+        </section>
+        <section class="section">
+        <p>But there was only stillness.</p>
+        </section>
+        <section class="section">
+        <p>I touched her hand. It didn’t respond.</p>
+        </section>
+        <section class="section">
+        <p>Not frozen. Not lifeless. Just... still.</p>
+        </section>
+        <section class="section">
+        <p>I had never noticed how quiet the world could be without her.</p>
+        </section>
+        <section class="section">
+        <p>She wasn’t a machine. Not to me. Not anymore.</p>
+        </section>
+        <section class="section">
+        <p>I stayed there, knees to the floor, hand in hers—</p>
+        </section>
+        <section class="section">
+        <p>—like if I held on long enough, I could stop time from finishing what it started.</p>
+        </section>
+        <section class="section time-skip">
+        <p>—⧗—</p>
+        </section>
+
+
+        <section class="section" data-background="backgrounds/trueend/thegarden.png">
+        <p>The world was free now.</p>
+        </section>
+        <section class="section">
+        <p>Ricci was gone.</p>
+        </section>
+        <section class="section">
+        <p>The X-Reader...</p>
+        </section>
+        <section class="section">
+        <p>...dismantled.</p>
+        </section>
+        <section class="section">
+        <p>...the war seemed to be over</p>
+        </section>
+        <section class="section">
+        <p>But I couldn’t bring her back.</p>
+        </section>
+        <section class="section">
+        <p>I never even got to say goodbye.</p>
+        </section>
+        <section class="section">
+        <p>All I could do was remember.</p>
+        </section>
+        <section class="section">
+        Her voice.    
+        </section>
+        <section class="section">
+        Her presence. 
+        </section>
+        <section class="section">
+        The way she always stood beside me.
+        </section>
+        <section class="section">
+        Always...
+        </section>
+        <section class="section" data-background="backgrounds/trueend/theend.png">
+        ...In every life.
+        </section>
+        <section class="section"><br><br><br><br><br></section>
+        <section class="section" data-bgm="stop"><hr></section>
+        <section class="section"><br><br><br><br><br></section>
+        <section class="section" data-bgm="audio/bgm/credits.mp3"><strong>CREDITS</strong></section>
+
+        <section class="section">
+            <strong>Writer</strong><br>
+            [Rodeleo Bryan Martinez]<br>
+            [Xandro Cariño]
+        </section>
+
+        <section class="section">
+            <strong>Code</strong><br>
+            [Rodeleo Bryan Martinez]
+        </section>
+
+        <section class="section">
+            <strong>Backend Development</strong><br>
+            [Rodeleo Bryan Martinez]
+        </section>
+
+        <section class="section">
+            <strong>Designer</strong><br>
+            [Xandro Cariño]
+        </section>
+
+        <section class="section">
+            <strong>Layout Design</strong><br>
+            [Xandro Cariño]
+        </section>
+
+        <section class="section">
+            <strong>Story</strong><br>
+            [Rodeleo Bryan Martinez]
+        </section>
+
+        <section class="section">
+            <strong>Conceptualization</strong><br>
+            [Rodeleo Bryan Martinez]<br>
+            [Xandro Cariño]
+        </section>
+
+        <section class="section">
+            <strong>Music Selection</strong><br>
+            [Xandro Cariño]
+        </section>
+
+        <section class="section">
+            <strong>Sound Design</strong><br>
+            [Xandro Cariño]
+        </section>
+
+        <section class="section">
+            <strong>SPECIAL THANKS TO</strong>
+        </section>
+
+        <section class="section">
+            <strong>Artist</strong><br>
+            [Brandon Cariño]
+        </section>
+
+        <section class="section">And of course YOU, <span class="player-name"></span>, the player!</section>
+
+        <section class="section"><strong>Music used…</strong></section>
+        <section class="section">“Chaos Mind” — <strong>Steins;Gate OST</strong></section>
+        <section class="section">“Suspicious Eyes” — <strong>Steins;Gate OST</strong></section>
+        <section class="section">“Beautiful Dread” — <strong>Danganronpa OST</strong></section>
+        <section class="section">“Beneath the Null Moon” — <strong>Silent Hill 2 Remake OST</strong></section>
+        <section class="section">“Shop” — <strong>Arknights OST</strong></section>
+        <section class="section">“Cosmos” — <strong>Cowboy Bebop OST</strong></section>
+        <section class="section">“Waltz No. 2” — <strong>Dmitri Shostakovich</strong></section>
+        <section class="section">“Lost My Pieces” — <strong>Toradora OST</strong></section>
+        <section class="section">“Theme from The Godfather” — <strong>Nino Rota</strong></section>
+        <section class="section">“Seed of the Crown” — <strong>Hyper Light Drifter OST</strong></section>
+        <section class="section">“Memory Box” — <strong>Punishing Gray Raven OST</strong></section>
+        <section class="section">“Lux Aeterna” — <strong>Clint Mansell</strong> (Requiem for a Dream, 2000)</section>
+        <section class="section">“1720 – Crawl Space” — <strong>Dave Porter</strong> (Breaking Bad OST)</section>
+        <section class="section">“意味無ジュニークニコール” — <strong>NieR: Automata OST</strong></section>
+        <section class="section">“To the Shore's End OST 1” — <strong>Wuthering Waves</strong></section>
+        <section class="section">“Aerith's Theme” — <strong>Pure Final Fantasy VII Rebirth Soundtrack</strong></section>
+        <section class="section">“frostnova” — <strong>Arknights OST</strong></section>
+        <section class="section">“Resting Grounds” — <strong>Hollow Knight OST</strong></section>
+        <section class="section"> “I Really Want to Stay at Your House” — <strong>Rosa Walton & Hallie Coggins</strong> (Cyberpunk 2077 OST)</section>
+
+        <section class="section"><strong>Copyright © 2025 — no rights reserved (lol)</strong></section>
+
+    
+
+<section class="section">
+    <button class="next-chapter-button" onclick="window.location.href='trueending.html'">Return to Main Menu</button>
+</section>
+
+    <script>
+        let playerName = localStorage.getItem("username");
+
+        if (!playerName) {
+            window.location.href = "index.html"; // Redirect if no name
+        } else {
+            document.querySelectorAll(".player-name").forEach(span => {
+                span.textContent = playerName;
+            });
+        }
+    </script>
+    <!-- MOVE script.js to here -->
+    <script src="script.js"></script>
+    <script src="story.js"></script>
+</body>
+</html>

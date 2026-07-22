@@ -1,0 +1,97 @@
+@font-face {
+    font-family: tomorrow;
+    src: url(tomorrow.ttf);
+  }
+  
+  body {
+    font-family: tomorrow;
+    margin: 0;
+    height: 100vh;
+    background-image: url('backgrounds/storyselect/storyselectbg.gif'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden; 
+  }
+  
+  #character-image {
+    position: absolute;
+    bottom: 0;
+    right: 25%;
+    width: 800px;
+    height: auto;
+    z-index: -1;
+  }
+  
+  .respond-scene {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 40px;
+  }
+  
+  .dialogue-box {
+    height: 80px;
+    width: 80%;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .input-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .answer-input {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #1e1e1e;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    width: 250px;
+    font-family: Tomorrow;
+    letter-spacing: 1px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .answer-input:focus {
+    border-color: #00d4ff;
+  }
+  
+  .image-button {
+    height: 45px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .image-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .go-back {
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,197 @@
+@font-face {
+    font-family: tomorrow;
+    src: url(tomorrow.ttf);
+  }
+body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-y: scroll hidden; /* Enable scrolling */
+    transition: background-image 1s ease-in-out; /* Smooth transition for background image */
+}
+
+#story-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
+}
+
+.section {
+    font-size: 24px;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease-out; /* Smooth fade transition */
+    width: 100%;
+    height: 400px; /* Set a fixed height for the sections */
+    position: relative; /* Position elements within the section */
+    text-align: center; /* Ensure text is centered */
+    margin-bottom: 20px; /* Space between sections */
+    background-size: cover; /* Make sure the image covers the entire section */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    z-index: 1; /* Make sure text is above background image */
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    pointer-events: none; /* Prevent interaction with the overlay */
+    transition: opacity 1s ease-in-out; /* Smooth transition for overlay */
+    z-index: -1; /* Ensure it stays behind other content */
+}
+
+.fade-in {
+    opacity: 1; /* Fade in effect */
+}
+
+.fade-out {
+    opacity: 0; /* Fade out effect */
+    transition: opacity 1s ease-in-out; /* Smooth transition for fade out */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Initially, hide the image */
+    transition: opacity 1s ease-out; /* Fade-in transition for the image */
+    z-index: -1; /* Position the image behind the text */
+}
+
+.section.visible {
+    opacity: 1; /* Make the text visible */
+}
+
+.section.visible .background-image {
+    opacity: 1; /* Fade in the background image */
+}
+
+/* New styles for smooth transitions */
+.section:not(.visible) {
+    transition: opacity 0.5s ease-out; /* Ensure smooth transition when not visible */
+}
+
+#collected-words-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none; /* <- Start as hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+#modal-content {
+    color: white;
+    background: rgb(43, 43, 43);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 80%;
+    text-align: center;
+}
+
+.collectible-word[data-type="red"] {
+    color: red;
+    text-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red;
+}
+
+.collectible-word[data-type="blue"] {
+    color: rgb(56, 165, 232);
+    text-shadow: 0 0 5px rgb(56, 165, 232), 0 0 10px rgb(56, 165, 232), 0 0 15px rgb(56, 165, 232);
+}
+
+.collectible-word[data-type="gold"] {
+    color: goldenrod;
+    text-shadow: 0 0 5px goldenrod, 0 0 10px goldenrod, 0 0 15px goldenrod;
+}
+
+
+.next-chapter-button {
+    padding: 12px 24px;
+    font-size: 1.2em;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-chapter-button:hover {
+    background-color: white;
+    color: #111;
+}
+
+.choice-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .choice-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #222;
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .choice-button:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .branch {
+    margin-top: 2rem;
+  }
+  .player-name {
+  text-transform: capitalize;
+}
+
+.shared-epilogue {
+    opacity: 1 !important;
+}

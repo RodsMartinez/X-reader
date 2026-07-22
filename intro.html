@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prologue</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro.css">
+
+</head>
+
+<body>
+    <audio id="bgm" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+   <div id="story-container">
+    <section class="section" data-background="backgrounds/prologue/black.jpg">
+        <br><br><br><br><br>
+    </section>
+    <section class="section" data-bgm="audio/bgm/bgm1.mp3">
+        <p>A Project In Accordance With</p>
+    </section>
+    <section class="section">
+        <p>Website Development (WebDev)</p>
+    </section>
+    <section class="section">
+        <p>Original story by:</p>
+    </section>
+
+    <section class="section">
+        <p>Rodeleo Bryan Martinez</p>
+    </section>
+     <section class="section">
+        <p>Xandro Cariño</p>
+    </section>
+
+    <section class="section">
+        <p style="text-align: center; font-size: 2em; font-weight: bold;"> Greetings <span class="player-name"></span></p>
+    </section>
+
+    <section class="section">
+        <p style="text-align: center; font-size: 2.2em;">It's time to wake up <hr></p>
+    </section>
+    <section class="section">
+        <br><br><br><br><br>
+    </section>
+    <section class="section">An intense, blinding migraine.</section>
+    <section class="section">Foam gushed from my mouth.</section>
+    <section class="section">It felt like millions — no, billions — of red ants</span> squirming inside my brain.</section>
+    <section class="section"data-background="backgrounds/prologue/bg1.png">My head was wracked with pain.</section>
+
+    <section class="section">If I had a choice between this and death...</section>
+    <section class="section">I would have begged for death.</section>
+
+    <section class="section">"<span class="player-name"></span>"</section>
+
+    <section class="section">Suddenly, the pain eased.</section>
+    <section class="section">A voice — distant, mechanical — called out to me.</section>
+    <section class="section">"It seems you're awake, <span class="player-name"></span>."</section>
+
+    <section class="section">A figure leaned into view.</section>
+    <section class="section" data-background="backgrounds/prologue/html.png">A woman.</section>
+    <section class="section">Or at least, something shaped like one.</section>
+
+    <section class="section">Her appearance was... haunting.</section>
+    <section class="section">Not ugly — no, far from it.</section>
+    <section class="section">She was perfect.</section>
+    <section class="section">Too perfect.</section>
+
+    <section class="section">Her face was smooth, flawless, unnervingly symmetrical.</section>
+    <section class="section">Her voice buzzed with a faint metallic hum.</section>
+    <section class="section">(<span class="player-name"></span>? Was that supposed to be my name?)</section>
+
+    <section class="section">"How long... was I out?"</section>
+    <section class="section">"Ten years. Exactly."</section>
+
+    <section class="section">Ten years...?</section>
+    <section class="section">The words barely registered.</section>
+    <section class="section">My throat burned as I croaked out the next question.</section>
+
+    <section class="section">"Who... are you?"</section>
+    <section class="section">"It seems the extraction has taken a toll on your physical body.<br> Fortunately, your mind remains intact."</section>
+
+    <section class="section">"What... are you talking about?"</section>
+    <section class="section">"I will be your guide, <span class="player-name"></span>."</section>
+    <section class="section">"My name is Helena Theresa M. Lewis. You may call me HTML."</section>
+    <section class="section">"I am an android, assigned to guide you through the Protocol."</section>
+
+    <section class="section">An android?</section>
+    <section class="section">A protocol?</section>
+    <section class="section">What the hell was she talking about?</section>
+
+    <section class="section">"You will now begin fulfilling your service."</section>
+    <section class="section">A service?</section>
+    <section class="section">What service?</section>
+
+    <section class="section">Before I could even protest, she continued —</section>
+    <section class="section">dropping the real deal.</section>
+    <section class="section">"We need you to save this nation."</section>
+
+    <section class="section">"Huh...? What...?"</section>
+
+    <section class="section">Without warning, she reached out —</section>
+    <section class="section">her cold, metal fingers brushing across my forehead.</section>
+    <section class="section">"And your mind is the key."</section>
+
+    <section class="section">She extended her hand toward me —</section>
+    <section class="section">waiting for me to take it.</section>
+    <section class="section">"Because you, <span class="player-name"></span>, are the well-proclaimed X Reader."</section>
+
+    <section class="section">
+        <button class="next-chapter-button" onclick="window.location.href='intro2.html'">Continue to Next Chapter</button>
+    </section>
+</div>
+
+     <!-- Skip Button -->
+     <button id="skipButton">Skip</button>
+
+     <!-- Confirmation Popup -->
+     <div id="skipPopup" class="hidden">
+         <div class="popup-content futuristic">
+           <p class="popup-title">Having déjà vu, perhaps?</p>
+           <p class="popup-warning">Skip this memory then...</p>
+           <div class="popup-buttons">
+             <button id="confirmSkip" class="popup-btn yes">Yes</button>
+             <button id="cancelSkip" class="popup-btn no">No</button>
+           </div>
+         </div>
+       </div>
+
+    <script>
+        document.getElementById("skipButton").addEventListener("click", function () {
+        document.getElementById("skipPopup").classList.remove("hidden");
+        });
+
+        document.getElementById("cancelSkip").addEventListener("click", function () {
+        document.getElementById("skipPopup").classList.add("hidden");
+        });
+
+        document.getElementById("confirmSkip").addEventListener("click", function () {
+        window.location.href = "storyselect.html"; // Redirect on confirmation
+        });
+
+
+        let playerName = localStorage.getItem("username");
+
+        if (!playerName) {
+            window.location.href = "index.html"; // Redirect if no name
+        } else {
+            document.querySelectorAll(".player-name").forEach(span => {
+                span.textContent = playerName;
+            });
+        }
+    </script>
+
+    <!-- MOVE script.js to here -->
+    <script src="script.js"></script>
+</body>
+</html>

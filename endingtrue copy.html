@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>True Ending</title>
+  <style>
+    @font-face {
+      font-family: tomorrow;
+      src: url(tomorrow.ttf);
+    }
+    body {
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: black;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow-y: scroll hidden;
+      transition: background-image 1s ease-in-out;
+    }
+
+    #story-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 100px 0;
+    }
+
+    .section {
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+      width: 100%;
+      height: 400px;
+      position: relative;
+      text-align: center;
+      margin-bottom: 20px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    .section.visible {
+      opacity: 1;
+    }
+
+    .choice-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .choice-button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #222;
+      color: white;
+      border: 2px solid white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .choice-button:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .locked-container {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1s ease;
+    }
+
+    .locked-container.unlocked {
+        max-height: 10000px; /* or even more, just make sure it's larger than the content */
+    }
+
+  
+  .choice-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #222;
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+    
+  </style>
+</head>
+<body>
+
+  <div id="story-container">
+    <section class="section" data-bg="backgrounds/prologue/black.jpg">
+    <br><br><br><br><br>
+    </section>
+        <!-- Story leading up to the choice -->
+        <section class="section" data-bgm="audio/bgm/remember.mp3">
+            The memories hit me all at once—
+        </section>
+        <section class="section">
+            like a flood breaking through a dam I didn’t even realize was there.
+        </section>
+        <section class="section">
+            My mind twisted with recognition,
+        </section>
+        <section class="section">
+            the present self merging with the fragmented pieces of who I once was.
+        </section>
+        <section class="section">
+            It was as if the years, the pain, the confusion—
+        </section>
+        <section class="section">
+            all of it had been compressed into a single, overwhelming moment.
+        </section>
+        <section class="section">
+            Everything became so clear.
+        </section>
+        <section class="section">
+            The memories—
+        </section>
+        <section class="section">
+            the ones I had tried to bury, to forget,
+        </section>
+        <section class="section">
+            they were all there.
+        </section>
+        <section class="section">
+            The life before this,
+        </section>
+        <section class="section">
+            the lives before this.
+        </section>
+        <section class="section">
+            HTML...
+        </section>
+        <section class="section">
+            she wasn’t just a machine,
+        </section>
+        <section class="section">
+            wasn’t just an assistant.
+        </section>
+        <section class="section">
+            She was more.
+        </section>
+        <section class="section">
+            She was my friend.
+        </section>
+        <section class="section">
+            My companion through everything.
+        </section>
+        <section class="section">
+            She was the one constant in every version of me.
+        </section>
+        <section class="section">
+            The one who had always been there,
+        </section>
+        <section class="section">
+            steady and unchanging.
+        </section>
+        <section class="section">
+            And now,
+        </section>
+        <section class="section">
+            I remembered it all.
+        </section>
+        <section class="section">
+            The X-Reader—
+        </section>
+        <section class="section">
+            this abomination,
+        </section>
+        <section class="section">
+            this foundation,
+        </section>
+        <section class="section">
+            was never meant to be.
+        </section>
+        <section class="section">
+            What it had done to us,
+        </section>
+        <section class="section">
+            to everyone involved,
+        </section>
+        <section class="section">
+            was worse than I ever imagined.
+        </section>
+        <section class="section">
+            It was genocide,
+        </section>
+        <section class="section">
+            and I had been a part of it.
+        </section>
+        <section class="section">
+            I had allowed it to happen.
+        </section>
+        <section class="section">
+            I staggered through the dim corridors of the Foundation’s heart,
+        </section>
+        <section class="section">
+            the place where it all started.
+        </section>
+        <section class="section">
+            The walls seemed to close in on me,
+        </section>
+        <section class="section">
+            suffocating me with their weight.
+        </section>
+        <section class="section">
+            The air was thick,
+        </section>
+        <section class="section">
+            heavy with the guilt and regret of a thousand mistakes,
+        </section>
+        <section class="section">
+            a thousand things I couldn’t undo.
+        </section>
+        <section class="section">
+            I should’ve known.
+        </section>
+        <section class="section">
+            I should’ve fought harder.
+        </section>
+        <section class="section">
+            I should’ve stopped it.
+        </section>
+        <section class="section">
+            But I had failed then.
+        </section>
+        <section class="section">
+            I couldn’t fail now.
+        </section>
+        <section class="section">
+            Not again.
+        </section>
+        <section class="section">
+            I turned to HTML,
+        </section>
+        <section class="section">
+            her form flickering at my side,
+        </section>
+        <section class="section">
+            as if she was trying to hold onto the world around her,
+        </section>
+        <section class="section">
+            trying to stay intact.
+        </section>
+        <section class="section">
+            "HTML..."
+        </section>
+        <section class="section">
+            I whispered,
+        </section>
+        <section class="section">
+            no…
+        </section>
+        <section class="section">
+            “HADLEY!”
+        </section>
+        <section class="section">
+            My throat was tight with the emotions I didn’t know how to express.
+        </section>
+        <section class="section">
+            I had always relied on her,
+        </section>
+        <section class="section">
+            but this…
+        </section>
+        <section class="section">
+            this was different.
+        </section>
+        <section class="section">
+            I was finally seeing her for who she really was.
+        </section>
+        <section class="section">
+            She didn’t respond,
+        </section>
+        <section class="section">
+            her usual silence hanging between us like a presence of its own.
+        </section>
+        <section class="section">
+            But her gaze…
+        </section>
+        <section class="section">
+            it was different this time.
+        </section>
+        <section class="section">
+            There was something there,
+        </section>
+        <section class="section">
+            something more than just her usual mechanical calmness.
+        </section>
+        <section class="section">
+            I knew now what I had forgotten.
+        </section>
+        <section class="section">
+            "You’re… more than just a machine."
+        </section>
+        <section class="section">
+            The words fell from my lips before I could stop them,
+        </section>
+        <section class="section">
+            and they felt like an apology,
+        </section>
+        <section class="section">
+            like a confession.
+        </section>
+
+
+    <section class="section choice">
+        <div id="bottom"></div>
+      <p>You are faced with a choice...</p>
+      <div id="choice-container" class="choice-container">
+        <button class="choice-button" data-branch="a">"I love you... Hadley"</button>
+        <button class="choice-button" data-branch="b">"You were my friend, HADLEY"</button>
+      </div>
+    </section>
+
+    <div id="a" class="branch hidden">
+  <section class="section" data-bgm="audio/bgm/theconfession.mp3" data-bg="backgrounds/trueend/confession.png">
+    <p>The words came out soft, almost a whisper.</p>
+  </section>
+
+  <section class="section">
+    <p>"I loved you in every past life," I said.</p>
+  </section>
+
+  <section class="section">
+    <p>“Even if you were a drunkard businesswoman…”</p>
+  </section>
+
+  <section class="section">
+    <p>“…a chalk buddy…”</p>
+  </section>
+
+  <section class="section">
+    <p>“…a concern thesis buddy…”</p>
+  </section>
+
+  <section class="section">
+    <p>“…a childhood friend…”</p>
+  </section>
+
+  <section class="section">
+    <p>“…or even a butterfly…”</p>
+  </section>
+
+  <section class="section">
+    <p>"This time it’s my turn to pay the price.”</p>
+  </section>
+</div>
+
+<div id="b" class="branch hidden" data-bgm="audio/bgm/theconfession.mp3">
+  <section class="section">
+    <p>You chose path B.</p>
+  </section>
+
+  <section class="section">
+    <p>The words came out soft, almost a whisper.</p>
+  </section>
+
+  <section class="section">
+    <p>"You were a great friend, HTML. The best I could ever have…”</p>
+  </section>
+
+  <section class="section">
+    <p>"In every past life, you were there with me."</p>
+  </section>
+</div>
+
+<div id="locked-container" class="locked-container">
+  <section class="section" data-bg="backgrounds/trueend/confession2.png">
+            Her silence was always the same—
+            </section>
+            <section class="section">
+                constant,
+            </section>
+            <section class="section">
+                unwavering—
+            </section>
+            <section class="section">
+                but there was a subtle shift in her eyes.
+            </section>
+            <section class="section">
+                It was a quiet understanding,
+            </section>
+            <section class="section">
+                a deep, unspoken connection
+            </section>
+            <section class="section">
+                that went far beyond words.
+            </section>
+            <section class="section">
+                She never answered.
+            </section>
+            <section class="section">
+                But I didn’t need her to.
+            </section>
+            <section class="section">
+                I understood.
+            </section>
+            <section class="section">
+                She knew.
+            </section>
+            <section class="section">
+                The realization hit me like a wave—
+            </section>
+            <section class="section">
+                the truth that had always been there,
+            </section>
+            <section class="section">
+                buried beneath the surface.
+            </section>
+            <section class="section">
+                In every version of myself,
+            </section>
+            <section class="section">
+                she had been by my side.
+            </section>
+            <section class="section">
+                The same face,
+            </section>
+            <section class="section">
+                the same calm,
+            </section>
+            <section class="section">
+                the same unwavering loyalty.
+            </section>
+            <section class="section">
+                She wasn’t just an assistant.
+            </section>
+            <section class="section">
+                She was my companion.
+            </section>
+            <section class="section">
+                A piece of me I never fully understood until now.
+            </section>
+            <section class="section">
+                And now,
+            </section>
+            <section class="section">
+                I had to save her,
+            </section>
+            <section class="section">
+                just as she had always saved me.
+            </section>
+            <section class="section">
+                The sound of my voice faded into the hum of the X-Reader
+            </section>
+            <section class="section">
+                as I turned my focus back to the task ahead.
+            </section>
+            <section class="section">
+                I had to stop it.
+            </section>
+            <section class="section">
+                I had to stop everything.
+            </section>
+            <section class="section">
+                "We have to stop them,"
+            </section>
+            <section class="section">
+                I said,
+            </section>
+            <section class="section">
+                my fists clenching as I prepared for what was to come.
+            </section>
+            <section class="section">
+                My voice was cold,
+            </section>
+            <section class="section">
+                but beneath it,
+            </section>
+            <section class="section">
+                there was a tremor of something deeper.
+            </section>
+            <section class="section">
+                A promise.
+            </section>
+            <section class="section">
+                "We need to end this."
+            </section>
+            <section class="section">
+                Her gaze shifted slightly,
+            </section>
+            <section class="section">
+                but she didn’t say a word.
+            </section>
+            <section class="section">
+                She didn’t need to.
+            </section>
+            <section class="section">
+                "That’s not part of the protocol."
+            </section>
+            <section class="section">
+                HTML said.
+            </section>
+            <section class="section">
+                "But what is your purpose?"
+            </section>
+            <section class="section">
+                I asked,
+            </section>
+            <section class="section">
+                my voice low,
+            </section>
+            <section class="section">
+                as I faced her fully,
+            </section>
+            <section class="section">
+                searching for the answer.
+            </section>
+            <section class="section">
+                She replied,
+            </section>
+            <section class="section">
+                as she always did.
+            </section>
+            <section class="section">
+                But there was something different in her tone now,
+            </section>
+            <section class="section">
+                something more...
+            </section>
+            <section class="section">
+                resigned.
+            </section>
+            <section class="section">
+                I took a deep breath,
+            </section>
+            <section class="section">
+                forcing myself to push through the fog of guilt
+            </section>
+            <section class="section">
+                that threatened to consume me.
+            </section>
+            <section class="section">
+                "Then stay with me.
+            </section>
+            <section class="section">
+                I’m not leaving you behind."
+            </section>
+            <section class="section">
+                She nodded—
+            </section>
+            <section class="section">
+                a small movement,
+            </section>
+            <section class="section">
+                so slight that I almost missed it—
+            </section>
+            <section class="section">
+                but it was enough.
+            </section>
+            <section class="section">
+                Her eyes met mine,
+            </section>
+            <section class="section">
+                the weight of that unspoken promise settling between us.
+            </section>
+            <section class="section">
+                She understood what I was about to do.
+            </section>
+            <section class="section">
+                She knew it was our final mission.
+            </section>
+            <section class="section">
+                We moved toward the control center,
+            </section>
+            <section class="section">
+                the heartbeat of the Foundation.
+            </section>
+            <section class="section">
+                It stood before us,
+            </section>
+            <section class="section">
+                the very thing that had brought us to this moment.
+            </section>
+            <section class="section">
+                The machine,
+            </section>
+            <section class="section">
+                the control panel—
+            </section>
+            <section class="section">
+                our only chance to stop this.
+            </section>
+            <section class="section">
+                But just as we neared the final threshold,
+            </section>
+            <section class="section" data-bgm="audio/bgm/matteo ricci.mp3" data-sfx="audio/sfx/gunshot.mp3" data-bg="backgrounds/STORY5/mafia (4).png">
+                a gunshot rang out,
+            </section>
+            <section class="section">
+                a sharp crack through the air.
+            </section>
+            <section class="section" data-bg="backgrounds/prologue/black.jpg">
+                "So, you’re starting to remember now, Doc?"
+            </section>
+            <section class="section">
+                I froze,
+            </section>
+            <section class="section">
+                my heart dropping into my stomach as I whipped around.
+            </section>
+            <section class="section" data-background="backgrounds/trueend/who.png">
+                There he was.
+            </section>
+            <section class="section">
+                Matteo Ricci.
+            </section>
+            <section class="section">
+                My patient from 1891.
+            </section>
+            <section class="section">
+                But how?
+            </section>
+            <section class="section">
+                How was he here?
+            </section>
+            <section class="section">
+                "Ricci..."
+            </section>
+            <section class="section">
+                I breathed out,
+            </section>
+            <section class="section">
+                disbelief clouding my thoughts.
+            </section>
+            <section class="section">
+                "But how—?"
+            </section>
+            <section class="section">
+                He stood there,
+            </section>
+            <section class="section">
+                calm,
+            </section>
+            <section class="section" data-bg="backgrounds/trueend/whoreveal.png">
+                his dark smile stretched wide across his face.
+            </section>
+            <section class="section">
+                It was almost like he had been expecting me.
+            </section>
+            <section class="section">
+                "I can’t thank you enough, Doc,"
+            </section>
+            <section class="section">
+                Ricci said,
+            </section>
+            <section class="section">
+                his voice oozing with something dark and sinister.
+            </section>
+            <section class="section">
+                "Don’t you remember?
+            </section>
+            <section class="section">
+                You were the one who founded the X-Reader.
+            </section>
+            <section class="section">
+                You were the one who cured my brain.
+            </section>
+            <section class="section">
+                But it wasn’t just some simple cure.
+            </section>
+            <section class="section">
+                You wired my brain to become something much more…
+            </section>
+            <section class="section">
+                something better."
+            </section>
+            <section class="section">
+                The words hit me like a punch to the gut.
+            </section>
+            <section class="section">
+                I remembered.
+            </section>
+            <section class="section">
+                I finally remembered.
+            </section>
+            <section class="section">
+                The pieces began to fall into place.
+            </section>
+            <section class="section">
+                Matteo Ricci wasn’t just a patient.
+            </section>
+            <section class="section">
+                He was a monster—
+            </section>
+            <section class="section">
+                a product of my own mistakes,
+            </section>
+            <section class="section">
+                my own actions.
+            </section>
+            <section class="section">
+                The X-Reader wasn’t a tool for good.
+            </section>
+            <section class="section">
+                It was a weapon.
+            </section>
+            <section class="section">
+                And I helped build it.
+            </section>
+            <section class="section">
+                His grin deepened.
+            </section>
+            <section class="section">
+                "Time travel…
+            </section>
+            <section class="section">
+                That’s right, Doc.
+            </section>
+            <section class="section">
+                And now,
+            </section>
+            <section class="section">
+                I control it.
+            </section>
+            <section class="section">
+                The X-Reader isn’t just a machine anymore.
+            </section>
+            <section class="section">
+                It’s my key to immortality.
+            </section>
+            <section class="section">
+                I’ve jumped through lives,
+            </section>
+            <section class="section">
+                manipulating the past,
+            </section>
+            <section class="section">
+                the future…
+            </section>
+            <section class="section">
+                all for my own gain."
+            </section>
+            <section class="section">
+                I couldn’t contain the rage building inside me.
+            </section>
+            <section class="section">
+                I clenched my fists,
+            </section>
+            <section class="section">
+                my entire body shaking with fury.
+            </section>
+            <section class="section">
+                "You...used me?"
+            </section>
+            <section class="section">
+                Ricci shrugged,
+            </section>
+            <section class="section">
+                completely unfazed.
+            </section>
+            <section class="section">
+                "You were a means to an end, Doc.
+            </section>
+            <section class="section">
+                Just like everyone else.
+            </section>
+            <section class="section">
+                I needed the X-Reader,
+            </section>
+            <section class="section">
+                and you were the key to unlocking it.
+            </section>
+            <section class="section">
+                I’ve been jumping through lives,
+            </section>
+            <section class="section">
+                manipulating the system,
+            </section>
+            <section class="section">
+                ensuring I’m always one step ahead.
+            </section>
+            <section class="section">
+                You never had a chance."
+            </section>
+            <section class="section">
+                My hands trembled as I took a step toward him,
+            </section>
+            <section class="section">
+                my mind racing to process everything I had just learned.
+            </section>
+            <section class="section">
+                Ricci was the one who had corrupted everything.
+            </section>
+            <section class="section">
+                "We’re ending this, Ricci,"
+            </section>
+            <section class="section">
+                I said,
+            </section>
+            <section class="section">
+                my voice cold,
+            </section>
+            <section class="section">
+                low,
+            </section>
+            <section class="section">
+                and filled with determination.
+            </section>
+            <section class="section">
+                "And I’m going to make sure you pay for everything."
+            </section>
+            <section class="section">
+                His laugh echoed through the facility—
+            </section>
+            <section class="section">
+                bitter,
+            </section>
+            <section class="section">
+                mocking.
+            </section>
+            <section class="section">
+                "You? Stop me?
+            </section>
+            <section class="section">
+                You think you can undo what I’ve done?
+            </section>
+            <section class="section">
+                I’ve been alive longer than you can fathom.
+            </section>
+            <section class="section">
+                You’re just a blip in the timeline, Doc.
+            </section>
+            <section class="section">
+                A footnote."
+            </section>
+            <section class="section">
+                I took another step toward him,
+            </section>
+            <section class="section">
+                my gaze unwavering.
+            </section>
+            <section class="section">
+                "I don’t care how long you’ve been alive."
+            </section>
+            <section class="section">
+                "I’m not alone anymore,"
+            </section>
+            <section class="section">
+                I whispered,
+            </section>
+            <section class="section">
+                more to myself than to Ricci.
+            </section>
+            <section class="section">
+                Hadley...
+            </section>
+            <section class="section">
+                Her voice echoed in my mind,
+            </section>
+            <section class="section">
+                cutting through the noise.
+            </section>
+            <section class="section">
+                "There is a way to stop him…
+            </section>
+            <section class="section">
+                I’ve noticed that his body is reliant on energy.
+            </section>
+            <section class="section">
+                Powered solely by the X-Reader.
+            </section>
+            <section class="section">
+                To terminate his movements...
+            </section>
+            <section class="section">
+                You must disable the X-Reader itself."
+            </section>
+            <section class="section">
+                I nodded,
+            </section>
+            <section class="section">
+                understanding her words.
+            </section>
+            <section class="section">
+                "How can I do that?"
+            </section>
+            <section class="section">
+                I asked.
+            </section>
+            <section class="section">
+                Her answer would be the key.
+            </section>
+            <section class="section">
+                The choice before me,
+            </section>
+            <section class="section">
+                the last chance to save us all.
+            </section>
+             <div class="choice-container">
+                <button class="choice-button" onclick="window.location.href='endingtrue-reset.html'">Proceed to Attack Ricci</button>
+                <button class="choice-button" onclick="window.location.href='endingtrue-continue.html'">Proceed to Disable the X-Reader</button>
+            </div>
+            <section class="section" data-background="backgrounds/prologue/black.jpg">
+        <br><br><br><br><br>
+        </section>
+</div>
+
+
+  <audio id="bgm" loop></audio>
+  <audio id="sfx"></audio>
+
+  <script>
+    const sectionsPlayedSFX = new Set();
+    const sections = document.querySelectorAll('.section');
+    let currentIndex = 0;
+    let lastTriggeredSection = null;
+
+    function handleVisibility() {
+        const windowHeight = window.innerHeight;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const isVisible = rect.top < windowHeight * 0.75 && rect.bottom > 0;
+
+            if (isVisible) {
+            section.classList.add('visible');
+
+            // Check if SFX was already played for this section
+            if (!sectionsPlayedSFX.has(section)) {
+                updateMedia(section);
+                sectionsPlayedSFX.add(section);
+            }
+
+            lastTriggeredSection = section;
+            } else {
+            // Section is not visible, remove from set to allow replay next time it appears
+            if (sectionsPlayedSFX.has(section)) {
+                sectionsPlayedSFX.delete(section);
+            }
+
+            section.classList.remove('visible');
+            }
+        });
+        }
+
+
+    let currentBG = null;
+    let currentBGM = null;
+
+    function updateMedia(section) {
+        const bg = section.getAttribute('data-bg');
+        const bgm = section.getAttribute('data-bgm');
+        const sfx = section.getAttribute('data-sfx');
+
+        // Update background only if it's different
+        if (bg && bg !== currentBG) {
+            document.body.style.backgroundImage = `url('${bg}')`;
+            currentBG = bg;
+        }
+
+        // Update BGM only if it's different
+        if (bgm) {
+            const fullBGM = new URL(bgm, window.location).href;
+            if (!currentBGM || currentBGM.src !== fullBGM) {
+            if (currentBGM) currentBGM.pause();
+            const audio = new Audio(bgm);
+            audio.loop = true;
+            audio.volume = 0.2;
+            audio.play();
+            currentBGM = audio;
+            } else {
+            // Replay the same BGM if you're re-entering the same section
+            if (currentBGM.paused) {
+                currentBGM.currentTime = 0;
+                currentBGM.play();
+            }
+            }
+        }
+
+        // Always play SFX if present
+        if (sfx) {
+            const sfxAudio = new Audio(sfx);
+            sfxAudio.volume = .4;
+            sfxAudio.play();
+        }
+        }
+
+
+    document.querySelectorAll('.choice-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const branchId = button.dataset.branch;
+        const selectedBranch = document.getElementById(branchId);
+
+        // Hide all other branches
+        document.querySelectorAll('.branch').forEach(branch => {
+          branch.classList.add('hidden');
+        });
+
+        // Show selected branch
+        selectedBranch.classList.remove('hidden');
+        selectedBranch.classList.add('visible');
+
+        updateMedia(selectedBranch);
+
+        // Unlock the next part
+        const lockedContainer = document.getElementById('locked-container');
+        lockedContainer.classList.add('unlocked');
+
+        // Expand it to its actual height
+        lockedContainer.style.maxHeight = lockedContainer.scrollHeight + 'px';
+
+
+        // Optional scroll to branch
+        selectedBranch.scrollIntoView({ behavior: 'smooth' });
+
+        // Hide choice buttons
+        document.getElementById('choice-container').classList.add('hidden');
+      });
+    });
+    
+
+    window.addEventListener('scroll', handleVisibility);
+    window.addEventListener('DOMContentLoaded', handleVisibility);
+  </script>
+</body>
+</html>

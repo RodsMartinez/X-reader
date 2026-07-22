@@ -1,0 +1,353 @@
+@font-face {
+    font-family: tomorrow;
+    src: url(tomorrow.ttf);
+  }
+@font-face {
+    font-family: quote;
+    src: url(Ethnocentric\ Rg.otf);
+  }
+
+body{
+  font-family: tomorrow;
+}
+.navbar {
+    background: url('header.png') no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    height: 100px; /* Example navbar height */
+  }
+  
+  /* Update the nav-logo */
+  .nav-logo {
+    height: 80px; /* Logo height fits inside navbar */
+    width: auto;
+    object-fit: contain;
+    transform:scale(2.5); 
+    transition: transform 0.3s ease-in-out; 
+  }
+.nav-logo:hover {
+    transform:scale(2.6); 
+}
+  /* Keep nav-left items aligned */
+  .nav-left a {
+    position: relative;
+    color: black;
+    text-decoration: none;
+    font-weight: 450;
+    letter-spacing: 0.05em;
+    font-size: 30px;
+    padding-left: 12px;
+    margin-left: 40px;
+    transition: all 0.3s ease;
+    transform: translateY(5px);
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+/* Yellow bar effect */
+.nav-left a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 100%;
+    background-color: #f6c744; 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+}
+
+/* Show yellow bar on hover */
+.nav-left a:hover::before {
+    opacity: 1;
+}
+
+/* Show yellow bar on active link */
+.nav-left a.active::before {
+    opacity: 1;
+}
+
+.login-button {
+    display: block;
+    width: 150px; /* adjust to your image size */
+    height: 80px;
+    background-image: url('loginbutton.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: filter 0.3s ease-in-out; 
+}
+
+.login-button:hover {
+    filter: brightness(0.9) invert(0.5) grayscale(3);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 100px); /* full height minus navbar */
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .story-quote {
+    font-family: quote;
+    font-size: 72px;
+    color: white;
+    text-shadow: 0 0 10px black;
+    margin-bottom: 10px;
+    max-width: 2000px;
+  }
+  
+  .story-btn {
+    font-family: quote;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: transparent;
+    color: white;
+    border: 2px solid transparent;
+    border-bottom: 1px solid #f6c744; 
+    padding: 15px 30px;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .story-btn:hover {
+    color: #f6c744;
+  }
+
+  .characters-section {
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .characters-title {
+  font-size: 200px;
+  font-weight: bold;
+  color: #ccc;
+  position: absolute; /* this makes it "float" */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%); /* centers it perfectly */
+  z-index: -1; /* behind everything */
+  opacity: 0.1; /* optional: make it more faded and subtle */
+  pointer-events: none; /* so it doesn't block button clicks */
+  }
+  .character-card {
+    margin: 50px auto 20px auto;
+    background: rgba(128, 128, 128, 0.5);
+    width: 90%;
+    max-width: 15000px;
+    max-height: 340px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    gap: 40px;
+  }
+
+  .character-text {
+    text-align: left;
+    max-width: 1000px;
+  }
+
+  .character-title {
+    font-size: 50px;
+    font-weight: bold;
+    display: inline-block;
+    color: white;
+    background: black;
+    padding: 5px 15px;
+    border: 1px solid white;
+    margin-bottom: 15px;
+    position: relative;
+  }
+
+  .character-title::after {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 5px;
+    background: yellow;
+    margin-top: 5px;
+  }
+
+  .character-description {
+    font-size: 45px;
+    color: #eee;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+
+  .character-images {
+    display: flex;
+    gap: 20px;
+  }
+
+  .character-images img {
+    height: 1000px;
+  }
+
+  /* Character selector buttons */
+  .character-buttons {
+    flex-direction: column;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin-left: 100px;
+    position: fixed;
+    left: 0px;
+    flex-direction: row; /* horizontal layout */
+    gap: 15px;
+    z-index: 1000;
+  }
+
+  .character-buttons img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 10px;
+  }
+
+  .character-buttons img:hover {
+    transform: scale(1.2);
+  }
+
+  .character-buttons img.active {
+    box-shadow: 0 0 15px 5px yellow;
+  }
+  .plot-section {
+    margin-top: 80px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .plot-title {
+    font-size: 400px;
+    font-weight: bold;
+    color: #ccc;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-95%, -0%);
+    z-index: -1;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .plot-content {
+    background: rgba(128, 128, 128, 0.5);
+    padding: 30px;
+    max-width: 10000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .plot-text {
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+    color:white;
+  }
+
+  .plot-text span.highlight {
+    color: yellow;
+    font-weight: bold;
+  }
+
+  .plot-image {
+    flex: 1;
+  }
+
+  .plot-image img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .nav-logo {
+    height: 40px;
+    vertical-align: middle;
+  }
+
+  .hidden {
+    display: none !important;
+    }
+
+  .popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+
+    .popup-content {
+      background: #222;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+
+    .popup-content input {
+      width: 80%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+
+    .popup-content button {
+      margin: 10px 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .logout-button {
+        display: block;
+        width: 150px;
+        height: 80px;
+        background-image: url('logoutbutton.png'); /* your logout image */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .logout-button:hover {
+        filter: brightness(0.9) invert(0.3) grayscale(2);
+    }

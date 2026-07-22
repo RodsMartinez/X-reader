@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHARACTERS</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="auth.js"></script>
+</head>
+<style>
+    body{
+    font-family: tomorrow;
+    margin: 0;
+    height: 100vh;
+    background-image: url('bg2.gif'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: screen; 
+    overflow: hidden; 
+}
+</style>
+<body>
+    <!--THIS IS THE CHARACTER PAGE-->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="logo.png" alt="Logo" class="nav-logo">
+            <a href="index.html">HOME</a>
+            <a href="index2.html"class="active">CHARACTERS</a>
+            <a href="index3.html">PLOT</a>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="login-button"></a>
+        </div>
+    </header>
+    <section class="characters-section">
+        <div class="characters-title">CHARACTERS</div>
+    
+        <div class="character-card">
+          <div class="character-text">
+            <div class="character-title" id="character-name">[YOU]</div>
+            <div class="character-description" id="character-description">
+              You are you. Your goal is to obtain valuable information from your past lives.
+            </div>
+          </div>
+    
+          <div class="character-images">
+            <img id="character-image-1" src="character1full.png" alt="Character 1">
+          </div>
+        </div>
+    
+        <!-- Character Selector Buttons -->
+        <div class="character-buttons">
+          <img src="character1.png" alt="Char 1" onclick="showCharacter(0)" id="button-0" class="active">
+          <img src="character2.png" alt="Char 2" onclick="showCharacter(1)" id="button-1">
+        </div>
+      </section>
+      <script>
+        const characters = [
+        {
+          name: "[YOU]",
+          get description() {
+            const username = localStorage.getItem('username') || "you";
+            return `You are ${username}. Your goal is to obtain valuable information from your past lives.`;
+          },
+          img1: "character1full.png",
+        },
+        {
+          name: "[HTML]",
+          description: "Also known as Hadley Therese M. Lewis. She guides you through your journey.",
+          img1: "character2full.png",
+        },
+      ];
+      
+        function showCharacter(index) {
+          document.getElementById('character-name').textContent = characters[index].name;
+          let description = characters[index].description;
+          if (characters[index].name === loggedInUser) {
+              description = `You are ${loggedInUser}. Your goal is to obtain valuable information from your past lives.`;
+          }
+          document.getElementById('character-description').textContent = description;
+          document.getElementById('character-image-1').src = characters[index].img1;
+      
+          // Update active button glow
+          for (let i = 0; i < characters.length; i++) {
+            document.getElementById('button-' + i).classList.remove('active');
+          }
+          document.getElementById('button-' + index).classList.add('active');
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+        updateLoginButton();
+
+        // Update [YOU] character name to logged in user's name
+        const loggedInUser = localStorage.getItem('username');
+        if (loggedInUser) {
+            characters[0].name = loggedInUser;
+            showCharacter(0); // Display updated character info immediately
+        }
+    });
+
+      </script>
+      <script>
+        // Check if true ending was reached
+      window.addEventListener('DOMContentLoaded', () => {
+        const isGalleryUnlocked = localStorage.getItem("unlockedGallery") === "true";
+
+        if (isGalleryUnlocked) {
+          const galleryButton = document.createElement("a");
+          galleryButton.href = "gallery.html";
+          galleryButton.textContent = "GALLERY";
+          galleryButton.className = "gallery-button";
+          document.querySelector('.nav-left').appendChild(galleryButton);
+        }
+      });
+  </script>
+     <!-- Popup (Login / Register) -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">×</span>
+
+      <!-- Login Form -->
+        <div id="login-form">
+          <h2>Who are you?</h2>
+          <input type="text" id="login-username" placeholder="Username"><br>
+          <input type="password" id="login-password" placeholder="Password">
+          <span class="toggle-password" onclick="togglePassword('login-password', this)">Reveal</span><br>
+          <button onclick="login()">Login</button>
+          <p style="text-align: center; margin-top: 10px;">
+          <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+          </p>
+          <p>Don't have an account? <button onclick="showRegisterForm()">Register</button></p>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-form" class="hidden">
+          <h2>Applying for X-Reader</h2>
+          <input type="text" id="register-username" placeholder="Username"><br>
+          <input type="password" id="register-password" placeholder="Password">
+          <span class="toggle-password" onclick="togglePassword('register-password', this)">Reveal</span><br>
+          <input type="number" id="register-age" placeholder="Age"><br>
+          <button onclick="register()">Register</button>
+          <p>Already part of the experimentation? <button onclick="showLoginForm()">Login</button></p>
+        </div>
+    </div>
+    </div>
+  </div>
+</html>

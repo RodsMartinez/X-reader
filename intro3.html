@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prologue</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro.css">
+</head>
+
+<body>
+    <audio id="bgm" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="story-container">
+        <section class="section" data-bgm="audio/bgm/intro3.mp3" data-background="backgrounds/prologue/black.jpg">
+        <br><br><br><br><br>
+        </section>
+        <section class="section" data-background="backgrounds/storyselect/storyselectbg.gif">"Your objective, <span class='player-name'></span>:</section>
+        <section class="section">Extract and gather information from your past lives."</section>
+    
+        <section class="section">"Understood."</section>
+    
+        <section class="section">"Your mind can endure an infinite number of transfers.</section>
+        <section class="section">You may revisit past lives as often as necessary."</section>
+    
+        <section class="section">"We currently have access to five significant incarnations."</section>
+    
+        <section class="section">"Only five?</section>
+        <section class="section">That seems... small."</section>
+    
+        <section class="section">"According to our data, these are the most critical timelines."</section>
+    
+        <section class="section">"I see."</section>
+    
+        <section class="section">"Oh yeah, why do you call this thing X-Reader in the first place?"</section>
+    
+        <section class="section">“Because your experience throughout the expedition is similar to reading a novel but repeating it ’X’ amount of times.”</section>
+    
+        <section class="section">"If you don’t have any more questions, I will now begin the procedure.</section>
+        <section class="section">Once you have gathered sufficient information, report to me.</section>
+        <section class="section"><strong>Only then can we initiate the next phase.</strong>"</section>
+    
+        <section class="section">
+            <button class="next-chapter-button" onclick="window.location.href='storyselect.html'">Enter the Timeline Archive</button>
+        </section>
+    </div>
+
+
+     <!-- Skip Button -->
+     <button id="skipButton">Skip</button>
+
+     <!-- Confirmation Popup -->
+     <div id="skipPopup" class="hidden">
+         <div class="popup-content futuristic">
+           <p class="popup-title">Having déjà vu, perhaps?</p>
+           <p class="popup-warning">Skip this memory then...</p>
+           <div class="popup-buttons">
+             <button id="confirmSkip" class="popup-btn yes">Yes</button>
+             <button id="cancelSkip" class="popup-btn no">No</button>
+           </div>
+         </div>
+       </div>
+
+    <script>
+        document.getElementById("skipButton").addEventListener("click", function () {
+        document.getElementById("skipPopup").classList.remove("hidden");
+        });
+
+        document.getElementById("cancelSkip").addEventListener("click", function () {
+        document.getElementById("skipPopup").classList.add("hidden");
+        });
+
+        document.getElementById("confirmSkip").addEventListener("click", function () {
+        window.location.href = "storyselect.html"; // Redirect on confirmation
+        });
+
+        let playerName = localStorage.getItem("username");
+
+        if (!playerName) {
+            window.location.href = "index.html"; // Redirect if no name
+        } else {
+            document.querySelectorAll(".player-name").forEach(span => {
+                span.textContent = playerName;
+            });
+        }
+    </script>
+
+    <!-- MOVE script.js to here -->
+    <script src="script.js"></script>
+</body>
+</html>

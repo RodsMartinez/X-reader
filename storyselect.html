@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-barba="wrapper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Story Select</title>
+  <link rel="stylesheet" href="storyselect.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Barba + GSAP -->
+  <script src="https://unpkg.com/@barba/core"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body data-barba="container" data-barba-namespace="storyselect">
+  <!-- Background Music -->
+  <audio id="bgm" src="backgrounds/storyselect/selectionbgm.mp3" loop autoplay></audio>
+
+  <h2 class="incarnate-title">CHOOSE YOUR INCARNATE</h2>
+
+  <div class="container">
+    <!-- Left Side: Button Selection -->
+    <div class="incarnate-selection">
+      <a href="STORY1.html">
+        <img class="hover-swap"
+             src="backgrounds/storyselect/button1.png"
+             data-hover="backgrounds/storyselect/button1hover.png"
+             alt="Incarnate 1999">
+      </a>
+    
+      <a href="STORY2.html">
+        <img class="hover-swap"
+             src="backgrounds/storyselect/button2.png"
+             data-hover="backgrounds/storyselect/button2hover.png"
+             alt="Incarnate ???">
+      </a>
+    
+      <a href="STORY3.html">
+        <img class="hover-swap"
+             src="backgrounds/storyselect/button3.png"
+             data-hover="backgrounds/storyselect/button3hover.png"
+             alt="Incarnate 2012">
+      </a>
+    
+      <a href="STORY4.html">
+        <img class="hover-swap"
+             src="backgrounds/storyselect/button4.png"
+             data-hover="backgrounds/storyselect/button4hover.png"
+             alt="Incarnate 1880">
+      </a>
+    
+      <a href="STORY5.html">
+        <img class="hover-swap"
+             src="backgrounds/storyselect/button5.png"
+             data-hover="backgrounds/storyselect/button5hover.png"
+             alt="Incarnate 1980">
+      </a>
+    </div>
+
+    <!-- Right Side: Character Display -->
+    <div class="character-side">
+      <div class="respond-button">
+        <a href="respond.html" id="respond-link">
+          <img src="backgrounds/storyselect/respond.png" alt="Respond Button">
+        </a>
+      </div>
+
+      <div id="character-container">
+        <canvas id="character-canvas"></canvas>
+      </div>
+
+      <div class="dialogue-box" id="dialogue-box">"It's up to you..."</div>
+    </div>
+  </div>
+
+  <!-- Words Collected UI -->
+  <div id="collected-words-popup" onclick="openCollectedWords()">Words Collected (click)</div>
+  <div id="modal-overlay" style="display: none;">
+    <div id="modal-content">
+      <h2>Collect 15 Words</h2>
+      <div id="collected-words-list"></div>
+      <button onclick="closeCollectedWords()">Close</button>
+    </div>
+  </div>
+
+  <a href="index2.html" class="return-to-login">
+    <img src="backgrounds/storyselect/return.png" alt="Return to Login">
+  </a>
+
+  <!-- App Scripts -->
+  <script src="storyselect.js"></script>
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    // On document load, update dialogue box if data is available in localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+        const dialogueBox = document.getElementById("dialogue-box");
+
+        // Retrieve the stored dialogue from localStorage
+        const returnDialogue = localStorage.getItem("returnDialogue");
+        const currentPage = localStorage.getItem("currentPage");
+
+        if (returnDialogue) {
+            // Parse the stored dialogue and display it
+            const phrases = JSON.parse(returnDialogue);
+            let currentPhrase = 0;
+
+            // Set initial dialogue based on the page
+            dialogueBox.textContent = phrases[currentPhrase];
+
+            // Cycle through phrases on clicks
+            dialogueBox.addEventListener("click", () => {
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                dialogueBox.textContent = phrases[currentPhrase];
+            });
+
+            // Clear the returnDialogue and currentPage after use
+            localStorage.removeItem("returnDialogue");
+            localStorage.removeItem("currentPage");
+        }
+    });
+    let playerName = localStorage.getItem("username");
+    if (!playerName) {
+      window.location.href = "index.html";
+    }
+    document.querySelectorAll('.hover-wrapper').forEach(wrapper => {
+    const base = wrapper.querySelector('.base-image');
+    const hover = wrapper.querySelector('.hover-image');
+
+    wrapper.addEventListener('mouseenter', () => {
+      hover.style.opacity = '1';
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      hover.style.opacity = '0';
+    });
+  });
+  function setSkipIntro() {
+    localStorage.setItem("skipIntro", "true");
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+        // Apply a fade-in effect to the body when the page loads
+        gsap.fromTo(document.body, {
+            opacity: 0
+        }, {
+            opacity: 1,
+            duration: 1 // Duration of the fade-in effect
+        });
+    });
+  </script>
+</body>
+</html>
